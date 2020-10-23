@@ -1,0 +1,21 @@
+{% extends 'base.html' %}
+{% block content %}
+<br/>
+<div class="container">
+  <div class="row">
+  {% for method in methods %}
+
+  <div class="card border-primary mb-3 mx-auto" style="max-width: 20rem;">
+  <div class="card-header">{{method.methodname}}</div>
+  <div class="card-body" style="background-image:url('/static/{{method.folder}}/download.png'); color: #fbf7fd;
+    text-shadow: 1px 1px 2px #8a6868, 0 0 1em #8cdecb;background-size: cover; text-overflow: ellipsis;">
+    <h4 class="card-title">Primary card title</h4>
+    <p class="card-text">{{method.body}}</p>
+    <a class="btn btn-primary btn-lg" href="{{url_for('method1',method_name=method.folder)}}" role="button">Learn more</a>
+  </div>
+</div>
+
+{% endfor%}
+</div>
+</div>
+{% endblock %}
