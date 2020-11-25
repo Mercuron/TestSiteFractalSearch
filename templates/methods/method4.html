@@ -12,23 +12,16 @@
     </div> -->
 
   <div class="col h-100">
-  <form method=post action ='/sendfilemethod2' enctype=multipart/form-data >
+  <form method=post action ='/sendfilemethod4' enctype=multipart/form-data >
   <fieldset>
-    <legend>Fourier Tranformation</legend>
-    <div class="form-group">
-      <label for="exampleInputFile">Image input</label>
-      <input type="file" class="form-control-file" id="exampleInputFile" aria-describedby="fileHelp" name="image_uploaded">
-      <small id="fileHelp" class="form-text text-muted">This is some placeholder block-level help text for the above input. It's a bit lighter and easily wraps to a new line.</small>
-    </div>
-    <button type="submit" class="btn btn-primary">Submit</button>
+    <legend>Test image allowed</legend>
+    <p>Uploading not available yet</p>
+    <button type="submit" class="btn btn-primary">Run Test</button>
 
   </fieldset>
 </form>
 <br/>
 <!-- ?path={{defaultimage}}&t={{def_threshold}} -->
-<form style="display:inline-block;" action="/calculatem2">
-  <button type="submit" class="btn btn-primary" style="visibility:{{def_style_button}}">Calculate</button>
-</form>
 </div>
 <div class="col ">
   <p>Input Image</p>
@@ -37,19 +30,34 @@
 </div>
 </div>
 </div>
+<style>
+  table.dataframe, .dataframe th, .dataframe td {
+    border: none;
+    border-bottom: 1px solid #C8C8C8;
+    border-collapse: collapse;
+    text-align:left;
+    padding: 10px;
+    margin-bottom: 40px;
+    font-size: 0.9em;
+  }
+
+  .male th {
+      background-color: #add8e6;
+      color: white;
+  }
+
+  .female th {
+      background-color: #77dd77;
+      color: white;
+  }
+
+  tr:nth-child(odd)		{ background-color:#eee; }
+  tr:nth-child(even)	{ background-color:#fff; }
+
+  tr:hover            { background-color: #ffff99;}</style>
 <div class="container mt-5 mb-5">
 
   <div class="row">
-    <div class="col">
-      <p>Description</p>
-   {% if textdes is defined %}
-     {% for t in textdes %}
-     <p>{{t}}</p>
-     {% endfor %}
-  {% else %}
-  <p>There will be result</p>
-  {% endif %}
-    </div>
     <div class="col">
       <p>Result Graph</p>
       {% if graph_ready is defined %}
@@ -57,6 +65,13 @@
 {% else %}
     <img src="{{defaultimage}}" class="img-fluid" alt="">
 {% endif %}
+    </div>
+    <div class="col">
+      <p>Calculated S_ value = {{text_s}} AvsNC = {{text_A}}</p>
+      {% for table in tables %}
+            {{titles[loop.index]}}
+            {{ table|safe }}
+{% endfor %}
 
     </div>
 

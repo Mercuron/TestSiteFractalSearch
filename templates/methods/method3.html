@@ -12,9 +12,9 @@
     </div> -->
 
   <div class="col h-100">
-  <form method=post action ='/sendfilemethod2' enctype=multipart/form-data >
+  <form method=post action ='/sendfilemethod3' enctype=multipart/form-data >
   <fieldset>
-    <legend>Fourier Tranformation</legend>
+    <legend>PCA Image Analysis</legend>
     <div class="form-group">
       <label for="exampleInputFile">Image input</label>
       <input type="file" class="form-control-file" id="exampleInputFile" aria-describedby="fileHelp" name="image_uploaded">
@@ -26,7 +26,7 @@
 </form>
 <br/>
 <!-- ?path={{defaultimage}}&t={{def_threshold}} -->
-<form style="display:inline-block;" action="/calculatem2">
+<form style="display:inline-block;" action="/calculatem3">
   <button type="submit" class="btn btn-primary" style="visibility:{{def_style_button}}">Calculate</button>
 </form>
 </div>
@@ -41,19 +41,17 @@
 
   <div class="row">
     <div class="col">
-      <p>Description</p>
-   {% if textdes is defined %}
-     {% for t in textdes %}
-     <p>{{t}}</p>
-     {% endfor %}
-  {% else %}
-  <p>There will be result</p>
-  {% endif %}
-    </div>
-    <div class="col">
       <p>Result Graph</p>
       {% if graph_ready is defined %}
     <img src="{{graph_ready}}" class="img-fluid" alt="">
+{% else %}
+    <img src="{{defaultimage}}" class="img-fluid" alt="">
+{% endif %}
+    </div>
+    <div class="col">
+      <p>Reconsructed image</p>
+      {% if rec_im is defined %}
+    <img src="{{rec_im}}" class="img-fluid" alt="">
 {% else %}
     <img src="{{defaultimage}}" class="img-fluid" alt="">
 {% endif %}
