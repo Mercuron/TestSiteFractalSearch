@@ -1,34 +1,84 @@
 {% extends 'base.html' %}
 {% block content %}
-<div class="jumbotron" style="background-image:url('/static/randomart.png'); background-size:cover;">
-  <h1 class="display-3">SoilOnline</h1>
-  <p class="lead">Calculation of basic soil physical parameters online</p>
-  <hr class="my-4">
-  <p> Models and methods are constantly being added, see what's available now:</p>
-  <p class="lead">
-    <a class="btn btn-primary btn-lg" href="#" role="button">Learn more</a>
+<div id='backgr' class="jumbotron" style="">
+<script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r121/three.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/vanta@latest/dist/vanta.waves.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r121/three.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/vanta@latest/dist/vanta.net.min.js"></script>
+<style type="text/css">
+ #backgr h1{
+   -webkit-text-stroke: 1px #0a0a0a;
+
+text-shadow: 0px 0px 0 #000, -1px -1px 0 #000, 1px -1px 0 #000, 0px 0px 0 #000, 0px 0px 0px #000;
+ }
+ #backgr {
+   color: white;
+   margin-bottom:auto;
+ }
+
+</style>
+<script>
+VANTA.WAVES({
+  el: "#backgr",
+  mouseControls: true,
+  touchControls: true,
+  gyroControls: false,
+  minHeight: 371.00,
+  minWidth: 200.00,
+  scale: 1.00,
+  scaleMobile: 1.00,
+  color: 0x206289,
+  shininess: 59.00
+})
+window.onload = function () {
+VANTA.NET({
+  el: "#backgr1",
+  mouseControls: true,
+  touchControls: true,
+  gyroControls: false,
+  minHeight: 200.00,
+  minWidth: 200.00,
+  scale: 1.00,
+  scaleMobile: 1.00,
+  color: 0xffffff,
+  backgroundColor: 0x007bff,
+  maxDistance: 24.00,
+  spacing: 18.00
+})}
+</script>
+  <h1 class="display-3" style="position:relative;"">SoilOnline</h1>
+  <p class="lead" style="position:relative;">Calculation of basic soil physical parameters online</p>
+  <!-- <hr class="my-4" style="position:relative;"> -->
+  <p style="position:relative;"> Models and methods are constantly being added, see what's available now:</p>
+  <p class="lead" style="position:relative;">
+    <a class="btn btn-primary btn-lg" href="#" role="button" style="position:relative;">Learn more</a>
   </p>
+
 </div>
-<div class="container row">
-  <div class="card border-primary mb-3 mx-auto" style="max-width: 20rem;">
-  <div class="card-header">Header</div>
-  <div class="card-body">
-    <h4 class="card-title">Primary card title</h4>
-    <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
+<!-- background-color:#007bff; -->
+<div class="container" style="background: rgb(2,0,36);
+background: linear-gradient(180deg, rgba(200,187,187,1) 0%, rgba(238,238,238,1) 11%, rgba(0,123,255,1) 100%);
+max-width: inherit;">
+<div class="container row mx-auto ">
+  <div class="container mt-5">
+  <!-- <div class="context">
+        <h1>Pure Css Animated Background</h1>
+    </div> -->
+    <div class="row">
+    {% for method in methods %}
+    <div class="card border-primary mb-3 mx-auto" style="max-width: 20rem;">
+    <div class="card-header " style="text-align:center">{{method.methodname}}</div>
+    <div class="card-body d-flex flex-column" style="background-image:url('/static/{{method.folder}}/download.png'); color: #fbf7fd;
+      text-shadow: 1px 1px 2px #8a6868, 0 0 1em #8cdecb;background-size: cover; text-overflow: ellipsis;">
+      <p class="card-text">{{method.body}}</p>
+      <a class=" mt-auto btn btn-primary btn-lg" href="{{url_for('method1',method_name=method.folder)}}" role="button" style="">Learn more</a></div>
+
   </div>
-</div>
-<div class="card border-primary mb-3 mx-auto" style="max-width: 20rem;">
-  <div class="card-header">Header</div>
-  <div class="card-body">
-    <h4 class="card-title">Primary card title</h4>
-    <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
+  {% endfor%}
   </div>
-</div>
-<div class="card border-primary mb-3 mx-auto" style="max-width: 20rem;">
-  <div class="card-header">Header</div>
-  <div class="card-body">
-    <h4 class="card-title">Primary card title</h4>
-    <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
+
+
+
   </div>
 </div>
 </div>

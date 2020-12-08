@@ -50,7 +50,7 @@ class Method1(db.Model):
 #ROUTES
 @app.route('/')
 def index():
-    return render_template('index.html')
+    return render_template('index.html',methods=Methods.query.all())
 @app.route('/allmethods')
 def allmethods():
     return render_template('allmethods.html',methods=Methods.query.all())

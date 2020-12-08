@@ -23,12 +23,25 @@
 <br/>
 <!-- ?path={{defaultimage}}&t={{def_threshold}} -->
 </div>
-<div class="col ">
-  <p>Input Image</p>
-  <img src="{{defaultimage}}" class="img-fluid" alt="">
+<!--  TUT-->
+</div>
+</div>
+<div class="container flex">
+  <div class="row">
+    <div class="col ">
+      <p>Input Image</p>
+      <img src="{{defaultimage}}" class="img-fluid" alt="">
 
-</div>
-</div>
+    </div>
+    <div class="col">
+      <p>Result Graph</p>
+      {% if graph_ready is defined %}
+    <img src="{{graph_ready}}" class="img-fluid" alt="">
+    {% else %}
+    <img src="{{defaultimage}}" class="img-fluid" alt="">
+    {% endif %}
+    </div>
+  </div>
 </div>
 <style>
   table.dataframe, .dataframe th, .dataframe td {
@@ -58,14 +71,7 @@
 <div class="container mt-5 mb-5">
 
   <div class="row">
-    <div class="col">
-      <p>Result Graph</p>
-      {% if graph_ready is defined %}
-    <img src="{{graph_ready}}" class="img-fluid" alt="">
-{% else %}
-    <img src="{{defaultimage}}" class="img-fluid" alt="">
-{% endif %}
-    </div>
+
     <div class="col">
       <p>Calculated S_ value = {{text_s}} AvsNC = {{text_A}}</p>
       {% for table in tables %}
